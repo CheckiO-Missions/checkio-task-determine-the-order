@@ -77,41 +77,137 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
             }
             //Dont change the code before it
 
-            //Your code here about test explanation animation
-            //$content.find(".explanation").html("Something text for example");
-            //
-            //
-            //
-            //
-            //
+            var canvas = new DetermineOrderCanvas({"input": checkioInput, "answer": rightResult});
+            canvas.createCanvas($content.find(".explanation")[0]);
+            canvas.animateCanvas();
 
 
             this_e.setAnimationHeight($content.height() + 60);
 
         });
 
-       
+        var $tryit;
+        var tryitData;
+        var tCanvas;
+//
+        ext.set_console_process_ret(function (this_e, ret) {
+            if (tCanvas) {
+                tCanvas.clearCanvas();
+            }
+            if (typeof(ret) !== "string") {
+                $tryit.find(".checkio-result-in").html(ext.JSON.encode(ret));
+                return false;
+            }
+            ret = ret.replace(/\'/g, "");
+            tCanvas = new DetermineOrderCanvas({"input": tryitData, "answer": ret});
+            tCanvas.createCanvas($tryit.find(".tryit-canvas")[0]);
+            tCanvas.animateCanvas();
+            return false;
+        });
 
-        var colorOrange4 = "#F0801A";
-        var colorOrange3 = "#FA8F00";
-        var colorOrange2 = "#FAA600";
-        var colorOrange1 = "#FABA00";
+        ext.set_generate_animation_panel(function (this_e) {
 
-        var colorBlue4 = "#294270";
-        var colorBlue3 = "#006CA9";
-        var colorBlue2 = "#65A1CF";
-        var colorBlue1 = "#8FC7ED";
+            $tryit = $(this_e.setHtmlTryIt(ext.get_template('tryit')));
 
-        var colorGrey4 = "#737370";
-        var colorGrey3 = "#9D9E9E";
-        var colorGrey2 = "#C5C6C6";
-        var colorGrey1 = "#EBEDED";
+            $tryit.find('form').submit(function (e) {
+                var data = $tryit.find("form .input-words").val();
+                if (!data) {
+                    return false;
+                }
+                tryitData = data.match(/\w+/gi);
+                $tryit.find("form .input-words").val(tryitData.join(" "));
+                this_e.sendToConsoleCheckiO(tryitData);
+                e.stopPropagation();
+                return false;
+            });
 
-        var colorWhite = "#FFFFFF";
-        //Your Additional functions or objects inside scope
-        //
-        //
-        //
+        });
+
+        function DetermineOrderCanvas(data) {
+
+            var words = data.input || [];
+            var result = data.answer || "";
+
+
+            var zx = 10;
+            var zy = 10;
+            var cellSizeY = 30;
+            var cellSizeX = 22;
+            var spacing = 0;
+            var resSpacing = 1.3;
+            var delay = 200;
+
+            var fullSizeX = result.length * cellSizeX > 300 ? result.length * cellSizeX : 300;
+            var fullSizeY = zy + (resSpacing + words.length) * cellSizeY * (1 + spacing);
+
+            var colorDark = "#294270";
+            var colorOrange = "#F0801A";
+            var colorBlue = "#8FC7ED";
+
+            var attrLetter = {"font-family": "Verdana", "font-size": cellSizeY * 0.9, "stroke": colorDark};
+            var attrLetterDisabled = {"font-family": "Verdana", "font-size": cellSizeY * 0.8,
+                "stroke": colorBlue, "fill": colorBlue};
+            var attrLetterNone = {"font-family": "Verdana", "font-size": cellSizeY * 0.8,
+                "stroke": colorOrange, "fill": colorOrange, "opacity": 0};
+
+            var paper;
+            var letterSet;
+            var letterDict = {};
+            for (var l = 0; l < result.length; l++) {
+                letterDict[result[l]] = [];
+            }
+
+            this.createCanvas = function(dom) {
+                paper = Raphael(dom, fullSizeX, fullSizeY, 0, 0);
+                letterSet = paper.set();
+                for (var i = 0; i < words.length; i++) {
+                    var sx = (fullSizeX - words[i].length * cellSizeX) / 2 + cellSizeX / 2;
+                    var sy = zy + (resSpacing + i) * cellSizeY * (1 + spacing) + cellSizeY / 2;
+                    for (var j = 0; j < words[i].length; j++){
+                        var letter = words[i][j];
+                        if (result.indexOf(letter) !== -1) {
+                            letterDict[letter] = letterDict[letter].concat([letterSet.length]);
+                        }
+                        letterSet.push(
+                            paper.text(sx + j * cellSizeX, sy, letter).attr(attrLetter)
+                        );
+
+                    }
+                }
+            };
+
+            this.animateCanvas = function() {
+                var sx = (fullSizeX - result.length * cellSizeX) / 2 + cellSizeX / 2;
+                var sy = zy + cellSizeY / 2;
+
+                for (var i = 0; i < result.length; i++) {
+                    setTimeout(function(){
+                        var letter = result[i];
+                        var pos = i;
+                        var rLetter;
+                        return function() {
+                            if (letterDict[letter].length) {
+                                rLetter = letterSet[letterDict[letter][0]];
+                                var disabledLetter = rLetter.clone();
+                                disabledLetter.attr(attrLetterDisabled);
+                                for (var j = 1; j < letterDict[letter].length; j++) {
+                                    letterSet[letterDict[letter][j]].animate(attrLetterDisabled, delay);
+                                }
+                            }
+                            else {
+                                rLetter = paper.text(sx + pos * cellSizeX, sy, letter).attr(attrLetterNone);
+                            }
+                            rLetter.animate({"x": sx + pos * cellSizeX, "y": sy, "opacity": 1}, delay);
+                        }
+                    }(), delay * 2 * i);
+                }
+            };
+
+            this.clearCanvas = function() {
+                paper.remove();
+            }
+
+        }
 
 
     }
