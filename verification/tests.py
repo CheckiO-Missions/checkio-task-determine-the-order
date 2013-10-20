@@ -7,30 +7,107 @@ Each test is dict with
     "explanation" -- not necessary key, it's using for additional info in animation.
 """
 
-
 TESTS = {
     "Basics": [
         {
-            "input": [3, 2],
-            "answer": 5,
-            "explanation": "3+2=?"
+            "input": ["acb", "bd", "zwa"],
+            "answer": "zwacbd"
         },
         {
-            "input": [5, 7],
-            "answer": 12,
-            "explanation": "5+7=?"
+            "input": ["klm", "kadl", "lsm"],
+            "answer": "kadlsm"
+        },
+        {
+            "input": ["a", "b", "c"],
+            "answer": "abc"
+        },
+        {
+            "input": ["aazzss"],
+            "answer": "azs"
+        },
+        {
+            "input": ["dfg", "frt", "tyg"],
+            "answer": "dfrtyg"
+        },
+
+        {
+            "input": ["hello", "low", "lino", "itttnosw"],
+            "answer": "helitnosw"
+        },
+
+        {
+            "input": ["my", "name", "myke"],
+            "answer": "namyke"
+        },
+
+        {
+            "input": ["xxxyyz", "yyww", "wwtt", "ttzz"],
+            "answer": "xywtz"
+        },
+
+        {
+            "input": ["axton", "bxton"],
+            "answer": "abxton"
+        },
+        {
+            "input": ["is", "not", "abc", "nots", "iabcn"],
+            "answer": "iabcnots"
+        },
+        {
+            "input": ["qwerty", "asdfg", "zxcvb", "yagz"],
+            "answer": "qwertyasdfgzxcvb"
         }
+
     ],
     "Extra": [
         {
-            "input": [6, 3],
-            "answer": 9,
-            "explanation": "6+3=?"
+            "input": ["bad", "dc", "zwb"],
+            "answer": "zwbadc"
         },
         {
-            "input": [6, 7],
-            "answer": 13,
-            "explanation": "6+7=?"
+            "input": ["klm", "kbcl", "ljm"],
+            "answer": "kbcljm"
+        },
+        {
+            "input": ["b", "d", "a"],
+            "answer": "abd"
+        },
+        {
+            "input": ["bbzzjj"],
+            "answer": "bzj"
+        },
+        {
+            "input": ["cfg", "frt", "tyg"],
+            "answer": "cfrtyg"
+        },
+
+        {
+            "input": ["hello", "low", "lino", "itttnojw"],
+            "answer": "helitnojw"
+        },
+
+        {
+            "input": ["my", "nbme", "myke"],
+            "answer": "nbmyke"
+        },
+
+        {
+            "input": ["rrryyz", "yyww", "wwtt", "ttzz"],
+            "answer": "rywtz"
+        },
+
+        {
+            "input": ["bxton", "dxton"],
+            "answer": "bdxton"
+        },
+        {
+            "input": ["ij", "not", "bda", "notj", "ibdan"],
+            "answer": "ibdanotj"
+        },
+        {
+            "input": ["qwerty", "bjcfg", "zxavd", "ybgz"],
+            "answer": "qwertybjcfgzxavd"
         }
+
     ]
 }
