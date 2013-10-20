@@ -1,39 +1,42 @@
 <p>
-    <i>( Describe task in general )</i>
-</p>
+    The Robots have found an encrypted message. We cannot decrypt it at the moment,
+    but we can take the first steps toward doing so. You have a set of "words" all in lower case, each word contains
+    symbols in "alphabetical order" (This order is not the typical alphabetical order, but a new and different order.)
+    We need to determine the order the symbols from each "word" and create a single "word" with all of these symbols,
+    placing them in the new alphabetial order.
+    For some cases if we cannot determine the order for several symbols you should use the traditional
+    <a href="http://en.wikipedia.org/wiki/Classical_Latin_alphabet#Classical_Latin_alphabet">latin alphabetical
+        order</a>.
+    For example:
+    Given words "acb", "bd", "zwa". As we can see "z" and "w" must be before "a"
+    and "d" after "b". So the result is "zwacbd".
 
-<p>
-    Sum two passed ints
-</p>
+<p><strong>Precondition: </strong>In each test, there can be the only one solution.</p>
 
-<p style="text-align: center;">
-    <img class="for_info_only" title="example" src="{{MEDIA}}example.png" alt="example" width="392px"/>
-    <img class="for_editor_only" title="example" src="{{MEDIA}}example.png" alt="example" width="380px"/>
-</p>
+<p><strong>Input: </strong>A list of strings.</p>
 
-<p><i>( Explain input and output values )</i></p>
-<p>
-    <strong>Input: </strong> Two arguments. Both are int
-</p>
+<p><strong>Output: </strong>A string.</p>
 
-<p>
-    <strong>Output: </strong> Int. 
-</p>
-
-
+<p><strong>Example:</strong></p>
+<pre class="brush: python">checkio(["acb", "bd", "zwa"]) == "zwacbd"
+checkio(["klm", "kadl", "lsm"]) == "kadlsm"
+checkio(["a", "b", "c"]) == "abc"
+checkio(["aazzss"]) == "azs"
+checkio(["dfg", "frt", "tyg"]) == "dfrtyg"
+</pre>
 
 <div class="for_info_only">
-    <p><i>( Put some usage examples )</i></p>
     <p>
         <strong>Example:</strong>
     </p>
-    <pre class="brush: python">
-checkio(3, 2) == 5
-checkio(5, 7) == 12
-    </pre>
+<pre class="brush: python">checkio(["acb", "bd", "zwa"]) == "zwacbd"
+checkio(["klm", "kadl", "lsm"]) == "kadlsm"
+checkio(["a", "b", "c"]) == "abc"
+checkio(["aazzss"]) == "azs"
+checkio(["dfg", "frt", "tyg"]) == "dfrtyg"
+</pre>
 </div>
 
 <p class="for_info_only">
     <strong>How it is used: </strong>
-    <i>(Here you can explain how it can be used in development and what is usage of this.)</i>
 </p>
