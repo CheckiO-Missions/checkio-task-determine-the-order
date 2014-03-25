@@ -1,7 +1,7 @@
 <p>
     The Robots have found an encrypted message. We cannot decrypt it at the moment,
     but we can take the first steps towards doing so. You have a set of "words", all in lower case, and each word contains
-    symbols in "alphabetical order" (it's not your typical alphabetical order, but a new and different order).
+    symbols in "alphabetical order". (it's not your typical alphabetical order, but a new and different order.)
     We need to determine the order of the symbols from each "word" and create a single "word" with all of these symbols,
     placing them in the new alphabetial order.
     In some cases, if we cannot determine the order for several symbols, you should use the traditional
@@ -11,11 +11,10 @@
     Given words "acb", "bd", "zwa". As we can see "z" and "w" must be before "a"
     and "d" after "b". So the result is "zwacbd".
 
-<p><strong>Precondition: </strong>For each test, there can be the only one solution.</p>
 
-<p><strong>Input: </strong>A list of strings.</p>
+<p><strong>Input: </strong>Words as a list of strings.</p>
 
-<p><strong>Output: </strong>A string.</p>
+<p><strong>Output: </strong>The order as a string.</p>
 
 <div class="for_info_only">
     <p>
@@ -31,4 +30,12 @@ checkio(["dfg", "frt", "tyg"]) == "dfrtyg"
 
 <p class="for_info_only">
     <strong>How it is used: </strong>
+    This concept can be useful for the cryptology.
+    It will help to find regularities in natural texts and ciphered messages.
+
+</p>
+
+<p><strong>Precondition: </strong>
+    For each test, there can be the only one solution.<br>
+    0 < |words| < 10
 </p>
