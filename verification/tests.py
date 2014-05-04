@@ -107,7 +107,30 @@ TESTS = {
         {
             "input": ["qwerty", "bjcfg", "zxavd", "ybgz"],
             "answer": "qwertybjcfgzxavd"
-        }
+        },
+        # See http://www.checkio.org/forum/post/781/i-think-there-should-be-more-tes/.
+        {
+            "input": ["ghi", "abc", "def"],
+            "answer": "abcdefghi"
+        },
+        # catch a particular algorithm which incorrectly assumes that
+        # checkio([seq1, seq2, seq3]) == checkio([checkio([seq1, seq2]),seq3])
+        {
+            "input": ["hfecba", "hgedba", "hgfdca"],
+            "answer": "hgfedcba"
+        },
+        {
+            "input": ["hfedba", "hgfdca", "hgecba"],
+            "answer": "hgfedcba"
+        },
+        {
+            "input": ["jhgfdba", "jihcba", "jigedca"],
+            "answer": "jihgefdcba"
+        },
+        {
+            "input": ["jhgedba", "jihcba", "jigfdca"],
+            "answer": "jihgefdcba"
+        },
 
     ]
 }
