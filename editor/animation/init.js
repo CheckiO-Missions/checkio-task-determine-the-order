@@ -95,7 +95,7 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
                 tCanvas.clearCanvas();
             }
             if (typeof(ret) !== "string") {
-                $tryit.find(".checkio-result-in").html(ext.JSON.encode(ret));
+                $tryit.find(".checkio-result-in").html(ext.JSON.stringify(ret));
                 return false;
             }
             ret = ret.replace(/\'/g, "");
