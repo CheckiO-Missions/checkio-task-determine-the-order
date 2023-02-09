@@ -1,0 +1,24 @@
+{% comment %}New initial code template{% endcomment %}
+{% block env %}import assert from "assert";{% endblock env %}
+
+{% block start %}
+function determOrder(data: string[]): string {
+    // your code here
+    return "";
+}
+{% endblock start %}
+
+{% block example %}
+console.log('Example:');
+console.log(determOrder(["acb", "bd", "zwa"]));
+{% endblock %}
+
+// These "asserts" are used for self-checking
+{% block tests %}
+{% for t in tests %}
+assert.strictEqual({% block call %}determOrder({{t.input|j_args}}){% endblock %}, {% block result %}{{t.answer|j}}{% endblock %});{% endfor %}
+{% endblock %}
+
+{% block final %}
+console.log("Coding complete? Click 'Check Solution' to earn rewards!");
+{% endblock final %}
