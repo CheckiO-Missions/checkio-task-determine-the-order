@@ -1,0 +1,40 @@
+<p style="text-align: justify;">
+    Die Roboter haben eine verschlüsselte Nachricht gefunden. Wir können sie im Moment nicht entschlüsseln,
+    aber wir können die ersten Schritte unternehmen, um dies zu tun. Sie haben eine Reihe von "Wörtern", alle in Kleinbuchstaben, und jedes Wort enthält
+    symbole in "alphabetischer Reihenfolge". (Es handelt sich nicht um Ihre typische alphabetische Reihenfolge, sondern um eine neue und andere Reihenfolge.)
+    Wir müssen die Reihenfolge der Symbole aus jedem "Wort" bestimmen und ein einziges "Wort" mit all diesen Symbolen erstellen,
+    indem wir sie in die neue alphabetische Reihenfolge bringen.
+    In manchen Fällen, wenn wir die Reihenfolge für mehrere Symbole nicht bestimmen können, sollten Sie die traditionelle
+   <a target="_blank" href="http://en.wikipedia.org/wiki/Classical_Latin_alphabet#Classical_Latin_alphabet">latin alphabetical
+        order</a>.
+    Ein Beispiel:
+    Gegebene Wörter "acb", "bd", "zwa". Wie wir sehen können, müssen "z" und "w" vor "a" stehen
+    und "d" nach "b". Das Ergebnis ist also "zwacbd".
+
+
+<p><strong>Eingabe:</strong> Wörter als{% if is_js %}n Array{% else %} Liste{% endif %} von Zeichenketten.</p>
+
+<p><strong>Ausgabe:</strong> Die Reihenfolge als String.</p>
+
+<div class="for_info_only">
+    <p>
+        <strong>Beispiele:</strong>
+    </p>
+    <pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+</div>
+
+<p class="for_info_only">
+    <strong>Wie es verwendet wird:</strong>
+    <i>
+        Dieses Konzept kann für die Kryptologie nützlich sein,
+    es hilft Ihnen, Regelmäßigkeiten und Muster in natürlichem Text und chiffrierten Nachrichten zu finden.
+    </i>
+
+</p>
+
+<p><strong>Vorbedingungen:</strong>
+    <ul>
+        <li><i>für jeden Test kann es nur eine Lösung geben;</i></li>
+        <li><i>0 &lt; |Wörter| &lt; 10.</i></li>
+    </ul>
+</p>
